@@ -6,7 +6,7 @@ if (isset($_SESSION['logedin'])) {
 
 } 
 else {
-    header("Location:" . $loc . "/afi/login/loginform.php");
+    header("Location:" . $loc . "/afi_new/login/loginform.php");
 }
 ?>
 <html>

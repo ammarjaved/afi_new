@@ -36,7 +36,7 @@ class Tehsil extends connection {
             'images', images,
             'fd_no', fd_no))))
             FROM (SELECT id, p_id, cd_id, pe_name, l1_id, l2_id, l3_id, acc_no, address, install_id, meter_type, bcrm_eqp, site_eqp, phase,images, fd_no, geom
-               FROM public.demand_point where cd_id='$cd_id' and phase='$phase' and fd_no='$fd_no') as tbl1;";
+               FROM public.dp_submitted where cd_id='$cd_id' and phase='$phase' and fd_no='$fd_no') as tbl1;";
 
         $output = array();
         $result_query = pg_query($sql);

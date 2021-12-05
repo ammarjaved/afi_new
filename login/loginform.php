@@ -2,7 +2,7 @@
 session_start();
 $loc='http://' . $_SERVER['HTTP_HOST'];
 if(isset($_SESSION['logedin'])){
-        header("Location:".$loc. "/syenergy/index.php");
+        header("Location:".$loc. "/afi_new/index.php");
 
 }
 ?>

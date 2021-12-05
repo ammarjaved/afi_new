@@ -45,7 +45,7 @@ var linescolor=['white','orange','grey']
         center: [2.3773940674819998, 102.21967220306398],
         // center: [31.5204, 74.3587],
         zoom: 15,
-        layers: [googleSat, demand_point, non_surveyed_dp,pano_layer,lvdb_l1,SFP_L2,MFP_L3],
+        layers: [googleSat, demand_point,pano_layer,lvdb_l1,SFP_L2,MFP_L3],
         attributionControl:false
     });
 

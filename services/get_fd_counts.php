@@ -7,7 +7,7 @@ $output = array();
 $phase=$_REQUEST['phase'];
 $lid=$_REQUEST['lid'];
 
-$sql1="select count(*), fd_no from public.demand_point where phase='$phase' and (l3_id='$lid' or l2_id='$lid' or l1_id='$lid') group by fd_no;";	
+$sql1="select count(*), fd_no from public.dp_submitted where phase='$phase' and (l3_id='$lid' or l2_id='$lid' or l1_id='$lid') group by fd_no;";
 
 
 //echo $sql1."<br/>";

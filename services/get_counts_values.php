@@ -5,10 +5,10 @@ $output = array();
 
 $cd_id=$_GET['cd_id'];
 
-$sql1="select count(*) from public.demand_point where phase='R' and meter_type='single' and cd_id ilike '$cd_id';";
-$sql2="select count(*) from public.demand_point where phase='Y' and meter_type='single' and cd_id ilike '$cd_id';";
-$sql3="select count(*) from public.demand_point where phase='B' and meter_type='single' and cd_id ilike '$cd_id';";   
-$sql4="select count(*) from public.demand_point where phase='RYB' and meter_type='three' and cd_id ilike '$cd_id';";   
+$sql1="select count(*) from public.dp_submitted where phase='R' and meter_type='single' and cd_id ilike '$cd_id';";
+$sql2="select count(*) from public.dp_submitted where phase='Y' and meter_type='single' and cd_id ilike '$cd_id';";
+$sql3="select count(*) from public.dp_submitted where phase='B' and meter_type='single' and cd_id ilike '$cd_id';";
+$sql4="select count(*) from public.dp_submitted where phase='RYB' and meter_type='three' and cd_id ilike '$cd_id';";
 
 //echo $sql1."<br/>";
 $query1=pg_query($sql1);
