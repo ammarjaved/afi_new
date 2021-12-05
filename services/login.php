@@ -25,7 +25,7 @@ class LoginUser extends connection
       $rs = pg_fetch_array($check_query);
     //  print_r($rs);
       if ($rs['user_name'] == $user_name && $rs['password']==$user_pass) {
-          $_SESSION['logedin']=$rs['user_name'];
+          $_SESSION['logedin1']=$rs['user_name'];
           $_SESSION['user_id']=$rs['id'];
 
           return "success";
@@ -37,7 +37,7 @@ class LoginUser extends connection
 }
    $loginuser=new LoginUser();
 
-   if(isset($_SESSION['logedin'])){
+   if(isset($_SESSION['logedin1'])){
        echo "you are already login";
    }else {
        echo $loginuser->login();

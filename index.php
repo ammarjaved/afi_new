@@ -2,7 +2,7 @@
 <?php
 session_start();
 $loc = 'http://' . $_SERVER['HTTP_HOST'];
-if (isset($_SESSION['logedin'])) {
+if (isset($_SESSION['logedin1'])) {
 
 } 
 else {
