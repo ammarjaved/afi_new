@@ -338,7 +338,7 @@ function fillDropDowns(di,lyr){
                 }
               }
               var total_sum=0;
-              var total_sum=Number(data.count[0].count) + Number(data.count[1].count)  + Number(data.count[2].count)  + Number(data.count[3].count);
+              var total_sum=Number(checkIncomingValue(data,0)) + Number(checkIncomingValue(data,1))  + Number(checkIncomingValue(data,2))  + Number(checkIncomingValue(data,3));
               $("#total_count").text(total_sum );
             $("#total_count_p").text(((total_sum*100)/10000)+'%');
             if(lyr=='fp'){
@@ -1510,6 +1510,16 @@ function exportExcel(){
 
         }
     });
+}
+
+
+function checkIncomingValue(val,num){
+    if(val.count[num]){
+        return val.count[num].count;
+    }else{
+        return 0
+    }
+
 }
 
 
