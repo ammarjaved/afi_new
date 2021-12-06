@@ -94,8 +94,8 @@ else {
                 <div class=" panel panel-default">
                     <div class="panel-body panel_body_style">
                         <label style="font-weight: bold;">FP</label>
-                        <select class="form-control formControlWIdth" name="fp" id="fpdropdown">
-                        <option selected disabled value="0">--Select ID--</option>
+                        <select class="form-control formControlWIdth"  name="fp" id="fpdropdown">
+                        <option onclick="resetAllDashboard()" selected disabled value="0">--Select ID--</option>
                         </select>
                     </div>
                 </div>

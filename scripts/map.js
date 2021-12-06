@@ -342,27 +342,33 @@ function fillDropDowns(di,lyr){
               $("#total_count").text(total_sum );
             $("#total_count_p").text(((total_sum*100)/10000)+'%');
             if(lyr=='fp'){
-                $('.load_options').remove();
+               // $('.load_options').remove();
                 //console.log(data.fp)
+                var str1='<option value="reset">select FP</option>'
                 if(data.fp!="false"){
                 for(var i=0;i<data.fp.length;i++){
-                    $('select[name="fp"]').append('<option value="'+ data.fp[i].l1_id+","+data.fp[i].x+"-"+data.fp[i].y+'">'+data.fp[i].l1_id+' ('+data.fp[i].pe_name+')'+'</option>');
+                    str1=str1+'<option value="'+ data.fp[i].l1_id+","+data.fp[i].x+"-"+data.fp[i].y+'">'+data.fp[i].l1_id+' ('+data.fp[i].pe_name+')'+'</option>';
                 }
+                    $('select[name="fp"]').html(str1);
             }
             }
             else if(lyr=='sfp'){
                 if(data.sfp!="false"){
-                    $('.load_options').remove();
-                for(var i=0;i<data.sfp.length;i++){  
-                    $('select[name="sfp"]').append('<option class="load_options" value="'+ data.sfp[i].l2_id+","+data.sfp[i].x+"-"+data.sfp[i].y+'">'+data.sfp[i].l2_id+' ( '+data.sfp[i].pe_name+')'+'</option>');
+                   // $('.load_options').remove();
+                   var str2='<option>select SFP</option>'
+                for(var i=0;i<data.sfp.length;i++){
+                    str2=str2+'<option class="load_options" value="'+ data.sfp[i].l2_id+","+data.sfp[i].x+"-"+data.sfp[i].y+'">'+data.sfp[i].l2_id+' ( '+data.sfp[i].pe_name+')'+'</option>';
                 }
+                    $('select[name="sfp"]').html(str2);
             }
             }else if(lyr=='mfp') {
                 if(data.mfp!="false"){
-                    $('.load_options').remove();
+                    var str3='<option>select MFP</option>'
+                  //  $('.load_options').remove();
                     for (var i = 0; i < data.mfp.length; i++) {
-                        $('select[name="mfp"]').append('<option class="load_options" value="'+ data.mfp[i].l3_id+","+data.mfp[i].x+"-"+data.mfp[i].y+'">' + data.mfp[i].l3_id+' ('+data.mfp[i].pe_name+')'+'</option>');
+                        str3=str3+'<option class="load_options" value="'+ data.mfp[i].l3_id+","+data.mfp[i].x+"-"+data.mfp[i].y+'">' + data.mfp[i].l3_id+' ('+data.mfp[i].pe_name+')'+'</option>';
                     }
+                    $('select[name="mfp"]').html(str3);
                 }
             }
         }
@@ -380,24 +386,31 @@ $('select[name="fp"]').on('change',function(e){
            
       //  }
     //   e.preventDefault();
+
       var l1_id= $(this).val();
-      var spl1id=l1_id.split(',');
-     // var did=spl1id[0];
-      spl2id=spl1id[1].split('-');
-      map.setView([spl2id[1],spl2id[0]],19);
-            $("#sred").text('');
+      if(l1_id=='reset'){
+          resetAllDashboard();
+      }else {
+
+
+          var spl1id = l1_id.split(',');
+          // var did=spl1id[0];
+          spl2id = spl1id[1].split('-');
+          map.setView([spl2id[1], spl2id[0]], 19);
+          $("#sred").text('');
           $("#syellow").text('');
           $("#sblue").text('');
           $("#tryb").text('');
           $("#total_count").text('');
-  
-      fillDropDowns(spl1id[0],'sfp')
 
-     // current_phase_val= spl1id[0].split(",")[0];
+          fillDropDowns(spl1id[0], 'sfp')
 
-      $('#fd_details_div').show();
-      current_dropdown_Lid=spl1id[0];
-      current_dropdown_latlng=[spl2id[1],spl2id[0]];
+          // current_phase_val= spl1id[0].split(",")[0];
+
+          $('#fd_details_div').show();
+          current_dropdown_Lid = spl1id[0];
+          current_dropdown_latlng = [spl2id[1], spl2id[0]];
+      }
       //get_dp_and_counts_against_dvid(l1_id); 
      // clickTopDropDowns(l1_id);
   });
@@ -511,7 +524,7 @@ $(document).ready(function(){
                             layer.on('click', function (e) {
                                 var dlatlng=[feature.geometry.coordinates[1], feature.geometry.coordinates[0]];
                                 current_dropdown_latlng= dlatlng;
-                                var did=feature.properties.l1_id;
+                                var did=feature.properties.l2_id;
                                 get_dp_and_counts_against_fp_dvid(did)
                             });
                         }
@@ -558,7 +571,7 @@ $(document).ready(function(){
                             layer.on('click', function (e) {
                                 var dlatlng=[feature.geometry.coordinates[1], feature.geometry.coordinates[0]];
                                 current_dropdown_latlng= dlatlng;
-                                var did=feature.properties.l1_id;
+                                var did=feature.properties.l3_id;
                                 get_dp_and_counts_against_fp_dvid(did)
                             });
                         }
@@ -1522,6 +1535,12 @@ function checkIncomingValue(val,num){
 
 }
 
+
+function resetAllDashboard(){
+    fillDropDowns('%','fp')
+    $('select[name="sfp"]').html('<option>select sfp</option>');
+    $('select[name="mfp"]').html('<option>select mfp</option>');
+}
 
 
 
