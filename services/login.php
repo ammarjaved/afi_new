@@ -18,7 +18,7 @@ class LoginUser extends connection
       // print_r($user_pass);
       // exit();
 
-      $check_sql = "select id, user_name, password FROM public.tbl_users where user_name='$user_name' and password='$user_pass'";
+      $check_sql = "select id, user_name, password FROM public.tbl_user_new where user_name='$user_name' and password='$user_pass'";
       //echo $check_sql;
       $check_query = pg_query($check_sql);
 
