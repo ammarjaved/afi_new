@@ -40,12 +40,20 @@ var linescolor=['white','orange','grey']
         maxZoom: 20,
         transparent: true
     });
+	
+	var cd_track = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
+        layers: 'cite:cd_tracking',
+        format: 'image/png',
+        maxZoom: 20,
+        transparent: true
+    });
+
 
     var map = L.map('map_div', {
         center: [2.3773940674819998, 102.21967220306398],
         // center: [31.5204, 74.3587],
         zoom: 15,
-        layers: [googleSat, demand_point,pano_layer,lvdb_l1,SFP_L2,MFP_L3],
+        layers: [googleSat,cd_track, demand_point,pano_layer,lvdb_l1,SFP_L2,MFP_L3],
         attributionControl:false
     });
 
@@ -285,7 +293,9 @@ var overlays = {
     "MFP_L3&nbsp&nbsp<img src='images/3.png' width='30' height='30'>": MFP_L3,
     "Surveyed Demand Points &nbsp&nbsp ": demand_point,
     "Non Surveyed D/P": non_surveyed_dp,
-    "Pano Layer":pano_layer
+    "Pano Layer":pano_layer,
+	"CD Tracking": cd_track
+	
 };
 
 L.control.layers(baseLayers, overlays).addTo(map);
