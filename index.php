@@ -445,6 +445,20 @@ else {
             });
     }
     function mapreset(){
+        if(phase_val!="") {
+            if (phase_val == "R") {
+                $('.fd_p').css({'background': '#EF5350'});
+            }
+            if (phase_val == "Y") {
+                $('.fd_p').css({'background': '#FFC107'});
+            }
+            if (phase_val == "B") {
+                $('.fd_p').css({'background': '#007BFF'});
+            }
+            if (phase_val == "RYB") {
+                $('.fd_p').css({'background': '#7d26cd'});
+            }
+        }
         if (point_polylines_arr !== undefined && point_polylines_arr.length !== 0) {
             for(var i=0; i<point_polylines_arr.length; i++){
                 map.removeLayer(point_polylines_arr[i])

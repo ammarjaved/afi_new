@@ -18,6 +18,7 @@ var color1='red'
 var color2='yellow'
 var color3='blue'
 var linescolor=['white','orange','grey']
+var phase_val="";
 
    
     var street   = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'),
@@ -852,7 +853,7 @@ $('select[name="mfp"]').on('change',function(e){
 
 // now filling color and values to fd_details_div
 $('.countdiv').on('click',function(){
-    var phase_val = $(this).attr("id");
+    phase_val = $(this).attr("id");
             // console.log(phase_val)
             if(phase_val=="R"){
                 $('.fd_p').css({'background': '#EF5350'});
@@ -886,7 +887,20 @@ $('.countdiv').on('click',function(){
 });
 
 $('.fd_p').on('click',function(){
+    if(phase_val=="R"){
+        $('.fd_p').css({'background': '#EF5350'});
+    }
+    if(phase_val=="Y"){
+        $('.fd_p').css({'background': '#FFC107'});
+    }
+    if(phase_val=="B"){
+        $('.fd_p').css({'background': '#007BFF'});
+    }
+    if(phase_val=="RYB"){
+        $('.fd_p').css({'background': '#7d26cd'});
+    }
     var id = $(this).attr("id");
+    $(this).css("background", "#00FFFF");
     var fd_no=id.replace("fd_p", "");
 
     // map.removeLayer(demand_point)
