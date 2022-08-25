@@ -351,7 +351,7 @@ function fillDropDowns(di,lyr){
               var total_sum=0;
               var total_sum=Number(checkIncomingValue(data,0)) + Number(checkIncomingValue(data,1))  + Number(checkIncomingValue(data,2))  + Number(checkIncomingValue(data,3));
               $("#total_count").text(total_sum );
-            $("#total_count_p").text(((total_sum*100)/10000)+'%');
+            $("#total_count_p").text(parseInt(((total_sum*100)/50000))+'%');
             if(lyr=='fp'){
                // $('.load_options').remove();
                 //console.log(data.fp)
@@ -487,7 +487,12 @@ $(document).ready(function(){
                             str = str + '</table></div>'
                             layer.bindPopup(str);
                             layer.on('click', function (e) {
-                                var dlatlng=[feature.geometry.coordinates[1], feature.geometry.coordinates[0]];
+                               
+                                if(feature.geometry.type=="MultiPoint"){
+                                    var dlatlng=[feature.geometry.coordinates[0][1], feature.geometry.coordinates[0][0]];
+                                }else{
+                                    var dlatlng=[feature.geometry.coordinates[1], feature.geometry.coordinates[0]];
+                                }
                                 current_dropdown_latlng= dlatlng;
                                 var did=feature.properties.l1_id;
                                 get_dp_and_counts_against_fp_dvid(did)
@@ -533,7 +538,11 @@ $(document).ready(function(){
                             str = str + '</table></div>'
                             layer.bindPopup(str);
                             layer.on('click', function (e) {
-                                var dlatlng=[feature.geometry.coordinates[1], feature.geometry.coordinates[0]];
+                                if(feature.geometry.type=="MultiPoint"){
+                                    var dlatlng=[feature.geometry.coordinates[0][1], feature.geometry.coordinates[0][0]];
+                                }else{
+                                    var dlatlng=[feature.geometry.coordinates[1], feature.geometry.coordinates[0]];
+                                }
                                 current_dropdown_latlng= dlatlng;
                                 var did=feature.properties.l2_id;
                                 get_dp_and_counts_against_fp_dvid(did)
@@ -579,8 +588,11 @@ $(document).ready(function(){
                             str = str + '<tr><td> image_10 </td><td><a href="'+feature.properties.image_10+'" class=\'example-image-link\' data-lightbox=\'example-set\' title=\'&lt;button class=&quot;primary &quot; onclick= rotate_img(&quot;pic1&quot)  &gt;Rotate image&lt;/button&gt;\'><img src="' + feature.properties.image_10 + '" width="20px" height="20px"></a></td></tr>'
                             str = str + '</table></div>'
                             layer.bindPopup(str);
-                            layer.on('click', function (e) {
+                            layer.on('click', function (e) {if(feature.geometry.type=="MultiPoint"){
+                                var dlatlng=[feature.geometry.coordinates[0][1], feature.geometry.coordinates[0][0]];
+                            }else{
                                 var dlatlng=[feature.geometry.coordinates[1], feature.geometry.coordinates[0]];
+                            }
                                 current_dropdown_latlng= dlatlng;
                                 var did=feature.properties.l3_id;
                                 get_dp_and_counts_against_fp_dvid(did)
@@ -1565,7 +1577,13 @@ function resetAllDashboard(){
     $('select[name="sfp"]').html('<option>select sfp</option>');
     $('select[name="mfp"]').html('<option>select mfp</option>');
 }
-
+   function searchSLD(){
+          var fp=$("#search_input1").val();
+         // alert(fp);
+          var a = document.getElementById('yourlinkId'); //or grab it by tagname etc
+          a.href = "http://121.121.232.54:88/sld_dia/index.php?fp="+fp;
+          $('#yourlinkId')[0].click();
+      }
 
 
 

@@ -148,6 +148,8 @@ else {
                     </div>
                     <div class="col-md-2" style="margin-top:25px;">
                         <button  style="margin-right:50px;" id="ser" onclick="search_deviceid()" class="pull-left btn btn-success">Search</button>
+						 <button  style="margin-right:50px;margin-top:5px;" id="ser" onclick="searchSLD()" class="pull-left btn btn-success">SLD</button>
+						 <a href="" id="yourlinkId" target="_blank" style="display:none;">click me</a>
                     </div>
                 </div>
             </div>
@@ -421,7 +423,7 @@ else {
         if(chktblname=='sfp_l2'){
              deviceid = $("#search_input2").val(); 
         }
-        if(chktblname=='mfp_l2'){
+        if(chktblname=='mfp_l3'){
              deviceid = $("#search_input3").val();
         }
         if(chktblname=='dp'){
