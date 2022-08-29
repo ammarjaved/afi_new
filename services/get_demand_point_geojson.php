@@ -16,6 +16,7 @@ class Tehsil extends connection {
         $lid=$_REQUEST['lid'];
         $phase=$_REQUEST['phase'];
         $fd_no=$_REQUEST['fd_no'];
+		$myextent=$_REQUEST['extent'];
         if ($lid=='%' && $phase=='%' && $fd_no=='%'){
             $sql = "SELECT json_build_object('type', 'FeatureCollection','crs',  json_build_object('type','name', 'properties', json_build_object('name', 'EPSG:4326'  )),'features', json_agg(json_build_object('type','Feature','gid',gid,'geometry',ST_AsGeoJSON(geom)::json,
                 'properties', json_build_object(
@@ -42,7 +43,7 @@ class Tehsil extends connection {
                 'image5', image5
                 ))))
                 FROM (SELECT gid, cd_id, pe_name, l1_id, l2_id, l3_id, acc_no, address, install_id, meter_type, bcrm_eqp, site_eqp, phase, fd_no, images, id1, device_id, image2, image3, image4, image5, geom
-                    FROM public.dp_submitted where cd_id is not null) as tbl1;";
+                    FROM public.dp_submitted where st_intersects(geom,st_geomfromtext('$myextent',4326)) and cd_id is not null limit 5000) as tbl1;";
         }
         else if ($phase=='%' && $fd_no=='%'){
             $sql = "SELECT json_build_object('type', 'FeatureCollection','crs',  json_build_object('type','name', 'properties', json_build_object('name', 'EPSG:4326'  )),'features', json_agg(json_build_object('type','Feature','gid',gid,'geometry',ST_AsGeoJSON(geom)::json,
