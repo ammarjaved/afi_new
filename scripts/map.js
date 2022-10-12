@@ -1126,7 +1126,7 @@ function addCountToDashboard(did,level){
           $("#syellow").text(response.Ysingle[0]["count"]);
           $("#sblue").text(response.Bsingle[0]["count"]);
           $("#tryb").text(response.RYBthree[0]["count"]);
-          $("#total_count").text(Number(response.Rsingle[0]["count"])+Number(response.Ysingle[0]["count"])+Number(response.Bsingle[0]["count"])+Number(response.RYBthree[0]["count"]));
+          $("#total_count").text('Normal :'+Number(response.Rsingle[0]["count"])+Number(response.Ysingle[0]["count"])+Number(response.Bsingle[0]["count"])+Number(response.RYBthree[0]["count"]));
 
         }
     });

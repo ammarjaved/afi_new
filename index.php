@@ -195,16 +195,16 @@ else {
                         <span class="count-name">Single Phase Blue</span>
                     </div>
                 </div>
-            
-                
-                <div class="col-md-2">
-                    <div style="cursor:pointer" class="countdiv card-counter total_counts" id="total">
+        
+        
+                    <div class="col-md-2" >    
+                    <div style="cursor:pointer;" class="countdiv card-counter total_counts" id="total">
                             <i class="fa fa-bolt"></i>
                             <span class="count-numbers" id="total_count" ></span>
-                            <span class="count-name" >Total</span>
+                            <span class="count-name">Total</span>
                     </div>
-                </div>
-
+                    </div>
+                
             <div class="col-md-2">
                 <div style="cursor:pointer" class="countdiv card-counter total_counts_p" id="total">
                     <i class="fa fa-bolt"></i>
@@ -279,15 +279,15 @@ else {
                     </div>
                 </div>
             </div>
-        <div id="wg" class="windowGroup">
+        
+        </div>
+<div id="wg" class="windowGroup">
 
         </div>
 
         <div id="wg1" class="windowGroup">
 
         </div>
-        </div>
-
 
     </div>
 
